@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>SpidBit</title>
+ <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+ <style>
+   body {
+    background-color: white;
+  }
+     .button {
+  border-radius: 8px;
+  background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 270px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+  .text {
+    color: #000;
+    font-family: Inconsolata, Courier, monospace;
+    font-size: 20px;
+  }
+  #output {
+    float: left;
+    padding-left: 20%;
+  }
+  #score {
+    padding-left: 55%;
+  }
+  #instructions {
+    float: left;
+    position: absolute;
+    left: 1.5%;
+    bottom: 3%;
+    font-size: small;
+    line-height: 110%;
+  }
+  #signature {
+    float: right;
+    position: absolute;
+    right: 1.5%;
+    bottom: 3%;
+    font-size: small;
+    line-height: 110%;
+  }
+  a:link {
+    color: inherit;
+  }
+     
+     #nohead {
+         
+         
+         padding-left: 450px;
+         font-family: monospace;
+         font-size: 44px;
+         
+     }
+     
+     #informationd{
+         
+         
+         
+         padding: 450px;
+         font-family: sans-serif;
+          
+         
+         
+         
+     }
+     
+</style>
+<script src="lib/cerebrum.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+</head>
+<body> 
+  
+  
+    <a href="/index.html"><button class="button"><span> Back To Home </span></button></a>
+  <h1 id="nohead"></h1>
+<p id=" informationd"></p>
+  
+  <div id="output" class="text"></div>
+  <div id="score" class="text"></div>
+  <div id="instructions" class="text"><br /><b>[Key Commands]</b><br />Load Fully Evolved Archive: [CTRL]<br />Speed Up: [E]<br />Slow Down: [D]<br />Toggle AI: [A]<br />Move Shape: [Arrow Keys]<br />Rotate Shape: [Up Arrow]<br />Drop Shape: [Down Arrow]<br />Save State: [Q]<br />Load State: [W]<br />Get Archive: [G]<br />Load Archive: [R]<br />Pick Shape: [I,O,T,S,Z,J,L]</div>
+  
+  
+
+  
+  
+  
+  
+  
+  <div id="signature" class="text">Created By Rohan Bhasin<br /><br /></div>
+  <script src="./tetnet.js"></script>
+  <script>
+    $(window).keydown(function (e){
+      if (e.ctrlKey) {
+        var archiveJSON = $.ajax({
+          url: "./archive.json",
+          async: false  
+        }).responseText;
+        loadArchive(archiveJSON);
+        alert("Archive loaded successfully!");
+      }
+    });
+  </script>
+  <script type="text/javascript">
+  </script>
+</body>
+</html>

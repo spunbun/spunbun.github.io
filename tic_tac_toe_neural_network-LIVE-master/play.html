@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>play - netttt</title>
+
+    <style>
+      body {
+        font-size: large;
+        font-family: sans-serif;
+      }
+          .button {
+  border-radius: 8px;
+  background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 270px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+  .text {
+    color: #000;
+    font-family: Inconsolata, Courier, monospace;
+    font-size: 20px;
+  }
+        
+      #play-area {
+        margin: 2em;
+      }
+      #settings, #controls {
+        margin: 1em;
+      }
+      #x-settings, #o-settings {
+        margin: 1ex;
+      }
+      #status {
+        width: 300px;
+        text-align: center;
+      }
+      #copyright {
+        margin: 1em;
+        font-size: small;
+        text-align: center;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+      <h1>X = Player</h1>
+      <h1>O = AI</h1>
+    <div id="play-area">
+      <canvas id="board" width="300" height="300"></canvas>
+      <div id="status"
+          data-empty="&nbsp;"
+          data-winner-x="X wins!"
+          data-winner-o="O wins!"
+          data-tie="Draw game"
+          data-paused="AI paused"
+          data-thinking="NeuroTac Thinking..."
+      >&nbsp;</div>
+    </div>
+
+    <div id="settings">
+      <div id="x-settings">
+        X:
+        <select id="x-control">
+          <option value="human" selected>Human</option>
+          <option value="ai-random">AI: random</option>
+          <option value="ai-easy">AI: Easy</option>
+          <option value="ai-smart">AI: Smart</option>
+          
+        </select>
+        <br>
+        
+      </div>
+      <div id="o-settings">
+        O:
+        <select id="o-control">
+          <option value="ai-smart">AI: Smart</option>
+          <option value="ai-random">AI: random</option>
+          <option value="ai-easy">AI: Easy</option>
+          
+          
+        </select>
+        <br>
+        
+      </div>
+    </div>
+
+    <div id="controls">
+      <input id="pause" type="button" value="Pause AI"
+          data-paused="Resume AI" data-unpaused="Pause AI">
+      <input id="step" type="button" value="Step AI">
+      <input id="undo" type="button" value="Undo">
+      <input id="restart" type="button" value="Restart">
+    </div>
+
+      <a href="../index.html" accesskey="">    <button class="button"><span> Back To Home </span></button></a>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+    <script src="src/ttt.js"></script>
+    <script src="src/neural.js"></script>
+    <script src="src/ai.js"></script>
+    <script src="src/genetic.js"></script>
+    <script src="play.js"></script>
+  </body>
+</html>
